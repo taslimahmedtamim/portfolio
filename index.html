@@ -7,12 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Animated Background -->
+    <canvas id="particle-canvas"></canvas>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
     <header class="site-header">
         <div class="header-inner">
-            <div class="logo">TAT</div>
+            <a href="#hero" class="logo">TAT</a>
             <nav class="site-nav" aria-label="Primary Navigation">
                 <button class="menu-toggle" aria-label="Toggle navigation">
                     <span></span>
@@ -20,7 +27,6 @@
                     <span></span>
                 </button>
                 <ul>
-                    <li><a href="#hero">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
@@ -33,128 +39,385 @@
 
     <main>
         <section id="hero" class="hero" aria-labelledby="hero-title">
+            <!-- Floating Decorations -->
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+            
             <div class="hero-content">
-                <p class="eyebrow">Full Stack Developer · Competitive Programmer · Cyber Security Enthusiast</p>
+                <p class="eyebrow">
+                    Full Stack Developer · Competitive Programmer · Cyber Security Enthusiast
+                </p>
                 <div class="hero-visual-mobile">
-                    <img src="assets/tamim.png" alt="Taslim Ahmed Tamim">
+                    <div class="image-ring">
+                        <img src="assets/tamim.png" alt="Taslim Ahmed Tamim">
+                    </div>
                 </div>
-                <h1 id="hero-title">Taslim Ahmed Tamim</h1>
+                <h1 id="hero-title">
+                    <span class="title-line">Taslim Ahmed</span>
+                    <span class="title-line highlight">Tamim</span>
+                </h1>
                 <p class="hero-typed" aria-live="polite">
                     <span class="typed-prefix">I build </span>
                     <span class="typed-text"></span>
                     <span class="typed-cursor">&#9608;</span>
                 </p>
                 <p class="hero-description">
-                    Curiosity runs in my veins — I’m addicted to learning and discovery. I turn complex ideas into immersive digital experiences with futuristic flair.
+                    Curiosity runs in my veins — I'm addicted to learning and discovery. I turn complex ideas into immersive digital experiences with futuristic flair.
                 </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="500">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Problems Solved</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="20">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Projects Built</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="3">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Years Coding</span>
+                    </div>
+                </div>
                 <div class="hero-actions">
-                    <a class="cta-button primary" href="#projects">Explore Work</a>
-                    <a class="cta-button ghost" href="docs/Taslim-Ahmed-Tamim-Resume.pdf" download>Download Resume</a>
+                    <a class="cta-button primary" href="#projects">
+                        <i class="fas fa-rocket"></i> Explore Work
+                    </a>
+                    <a class="cta-button ghost" href="docs/Taslim-Ahmed-Tamim-Resume.pdf" download>
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+                <div class="hero-social">
+                    <a href="https://github.com/taslimahmedtamim" target="_blank" rel="noopener" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/taslim-ahmed-tamim/" target="_blank" rel="noopener" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://codeforces.com/profile/taslimahmedtamim" target="_blank" rel="noopener" class="social-link">
+                        <i class="fas fa-code"></i>
+                    </a>
+                    <a href="mailto:taslimahmedtamim4u@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
             <div class="hero-visual" aria-hidden="true">
-                <img src="assets/tamim.png" alt="Taslim Ahmed Tamim">
+                <div class="image-container">
+                    <div class="image-ring">
+                        <div class="ring-glow"></div>
+                        <img src="assets/tamim.png" alt="Taslim Ahmed Tamim">
+                    </div>
+                    <div class="orbit orbit-1">
+                        <div class="orbit-dot"></div>
+                    </div>
+                    <div class="orbit orbit-2">
+                        <div class="orbit-dot"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="about" class="panel about">
             <div class="panel-header">
-                <h2>About</h2>
+                <h2><i class="fas fa-user-astronaut"></i> About</h2>
                 <span class="panel-tag">Mission Brief</span>
             </div>
-            <div class="panel-grid">
-                <article class="card card-gloss">
-                    <h3>The Story</h3>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="about-image-wrapper">
+                        <img src="assets/tamim.png" alt="Taslim Ahmed Tamim">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3 class="about-title">The Story</h3>
                     <p>
-                        I solve problems with code, strategy, and a relentless curiosity. Whether it is crafting full stack products, mastering competitive programming challenges, or exploring cyber security, I thrive at the crossroads of creativity and logic.
+                        I'm a passionate <strong>Full Stack Developer</strong> and <strong>Competitive Programmer</strong> from Dhaka, Bangladesh. With a deep love for solving complex problems and building innovative solutions, I've dedicated myself to mastering the art of code.
+                    </p>
+                    <p>
+                        My journey began with curiosity — and that curiosity has led me through countless algorithms, web applications, and security challenges. Whether it's crafting scalable backend systems, designing intuitive user interfaces, or competing in programming contests, I thrive at the intersection of creativity and logic.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Dhaka, Bangladesh</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Computer Science Student</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Competitive Programmer</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Cyber Security Enthusiast</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-grid about-cards">
+                <article class="card card-gloss">
+                    <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>My Mission</h3>
+                    <p>
+                        To create technology that makes a difference — solving real problems with elegant, efficient, and secure solutions.
                     </p>
                 </article>
                 <article class="card card-gloss">
-                    <h3>Based In</h3>
-                    <p>Dhaka, Bangladesh</p>
+                    <div class="card-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Mindset</h3>
+                    <p>Always iterating. Always shipping. Always learning. Every challenge is an opportunity to grow.</p>
                 </article>
                 <article class="card card-gloss">
-                    <h3>Mindset</h3>
-                    <p>Always iterating. Always shipping. Always learning.</p>
+                    <div class="card-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Passion</h3>
+                    <p>I believe in the power of clean code, continuous learning, and building products that users love.</p>
                 </article>
             </div>
         </section>
 
         <section id="skills" class="panel skills">
             <div class="panel-header">
-                <h2>Skills</h2>
+                <h2><i class="fas fa-cogs"></i> Skills</h2>
                 <span class="panel-tag">Tech Arsenal</span>
             </div>
-            <div class="skills-grid">
-                <article class="card skill-card">
-                    <h3>Programming Languages</h3>
-                    <ul>
-                        <li>C</li>
-                        <li>C++</li>
-                        <li>Java</li>
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </article>
-                <article class="card skill-card">
-                    <h3>Web Stack</h3>
-                    <ul>
-                        <li>PostgreSQL</li>
-                        <li>Express.js</li>
-                        <li>React</li>
-                        <li>Node.js</li>
-                    </ul>
-                </article>
-                <article class="card skill-card">
-                    <h3>Databases</h3>
-                    <ul>
-                        <li>MySQL</li>
-                        <li>PostgreSQL</li>
-                        <li>MongoDB</li>
-                    </ul>
-                </article>
-                <article class="card skill-card">
-                    <h3>Focus Areas</h3>
-                    <ul>
-                        <li>End-to-end Product Engineering</li>
-                        <li>Competitive Programming</li>
-                        <li>Cyber Security</li>
-                    </ul>
-                </article>
+            <div class="skills-container">
+                <div class="skills-grid">
+                    <article class="card skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="fas fa-code"></i></div>
+                            <h3>Programming Languages</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li><span class="skill-name">C/C++</span><div class="skill-bar"><div class="skill-progress" data-width="95%"></div></div></li>
+                            <li><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-progress" data-width="88%"></div></div></li>
+                            <li><span class="skill-name">JavaScript</span><div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div></li>
+                            <li><span class="skill-name">Java</span><div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div></li>
+                        </ul>
+                    </article>
+                    <article class="card skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+                            <h3>Web Stack (PERN)</h3>
+                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag"><i class="fab fa-react"></i> React</li>
+                            <li class="skill-tag"><i class="fab fa-node-js"></i> Node.js</li>
+                            <li class="skill-tag"><i class="fas fa-server"></i> Express.js</li>
+                            <li class="skill-tag"><i class="fas fa-database"></i> PostgreSQL</li>
+                            <li class="skill-tag"><i class="fab fa-html5"></i> HTML5</li>
+                            <li class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</li>
+                            <li class="skill-tag"><i class="fas fa-wind"></i> Tailwind CSS</li>
+                        </ul>
+                    </article>
+                    <article class="card skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="fas fa-database"></i></div>
+                            <h3>Databases</h3>
+                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag"><i class="fas fa-database"></i> MySQL</li>
+                            <li class="skill-tag"><i class="fas fa-database"></i> PostgreSQL</li>
+                            <li class="skill-tag"><i class="fas fa-leaf"></i> MongoDB</li>
+                            <li class="skill-tag"><i class="fas fa-fire"></i> Firebase</li>
+                        </ul>
+                    </article>
+                    <article class="card skill-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="fas fa-tools"></i></div>
+                            <h3>Tools & Platforms</h3>
+                        </div>
+                        <ul class="skill-tags">
+                            <li class="skill-tag"><i class="fab fa-git-alt"></i> Git</li>
+                            <li class="skill-tag"><i class="fab fa-github"></i> GitHub</li>
+                            <li class="skill-tag"><i class="fab fa-linux"></i> Linux</li>
+                            <li class="skill-tag"><i class="fab fa-docker"></i> Docker</li>
+                            <li class="skill-tag"><i class="fas fa-terminal"></i> VS Code</li>
+                        </ul>
+                    </article>
+                    <article class="card skill-card focus-card">
+                        <div class="skill-card-header">
+                            <div class="skill-icon"><i class="fas fa-crosshairs"></i></div>
+                            <h3>Focus Areas</h3>
+                        </div>
+                        <ul class="focus-list">
+                            <li>
+                                <i class="fas fa-project-diagram"></i>
+                                <div>
+                                    <strong>Full Stack Development</strong>
+                                    <span>End-to-end product engineering</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-trophy"></i>
+                                <div>
+                                    <strong>Competitive Programming</strong>
+                                    <span>Algorithm design & problem solving</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <strong>Cyber Security</strong>
+                                    <span>Web security & ethical hacking</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
             </div>
         </section>
 
         <section id="projects" class="panel projects">
             <div class="panel-header">
-                <h2>Projects</h2>
+                <h2><i class="fas fa-folder-open"></i> Projects</h2>
                 <span class="panel-tag">Command Center</span>
             </div>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Apps</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+                <button class="filter-btn" data-filter="cp">Competitive</button>
+            </div>
             <div class="projects-grid">
-                <article class="card project-card">
-                    <div class="project-status">Incoming Transmission</div>
-                    <h3>Project Slots Reserved</h3>
-                    <p>Plug in your top projects here. Each slot supports detailed descriptions, tech stack badges, and live/demo links.</p>
-                    <a class="project-link" href="#contact">Share project details →</a>
+                <article class="card project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/taslimahmedtamim/UConnect" target="_blank" class="project-btn"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-btn"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-status live">Live Project</div>
+                        <h3>UConnect</h3>
+                        <p>A comprehensive university management system with student portals, course management, and administrative tools.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>PostgreSQL</span>
+                            <span>Express</span>
+                        </div>
+                    </div>
                 </article>
-                <article class="card project-card placeholder">
-                    <h3>Next Big Build</h3>
-                    <p>Ready when you are. Drop details to showcase your next launch.</p>
+                
+                <article class="card project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/taslimahmedtamim/portfolio" target="_blank" class="project-btn"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-btn"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-status live">Live Project</div>
+                        <h3>Portfolio Website</h3>
+                        <p>A futuristic personal portfolio showcasing projects, skills, and achievements with modern animations.</p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
                 </article>
-                <article class="card project-card placeholder">
-                    <h3>Future Case Study</h3>
-                    <p>Use this space for a deep dive into your process and impact.</p>
+
+                <article class="card project-card" data-category="cp">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/taslimahmedtamim/dsa-cp-archive" target="_blank" class="project-btn"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-status">Repository</div>
+                        <h3>DSA & CP Archive</h3>
+                        <p>Collection of 500+ competitive programming solutions from Codeforces, LeetCode, and more.</p>
+                        <div class="project-tech">
+                            <span>C++</span>
+                            <span>Python</span>
+                            <span>Algorithms</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card project-card" data-category="tools">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-btn"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-status">Completed</div>
+                        <h3>Web Calculator</h3>
+                        <p>A sleek, responsive calculator with scientific functions and a modern glassmorphism design.</p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-btn"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-status">In Progress</div>
+                        <h3>Chumt Wallet</h3>
+                        <p>A personal finance tracker with expense categorization, budgeting, and analytics dashboard.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card project-card placeholder-card" data-category="all">
+                    <div class="project-content centered">
+                        <div class="project-placeholder-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <h3>More Coming Soon</h3>
+                        <p>Exciting new projects in development. Stay tuned for updates!</p>
+                        <a class="project-link" href="#contact">Collaborate with me →</a>
+                    </div>
                 </article>
             </div>
         </section>
 
         <section id="blog" class="panel blog">
             <div class="panel-header">
-                <h2>Blog</h2>
+                <h2><i class="fas fa-rss"></i> Blog</h2>
                 <span class="panel-tag">Signal Log</span>
             </div>
             <div class="blog-intro">
-                <p>Share your discoveries, experiments, and insights. These slots auto-expand as you publish new posts.</p>
-                <a class="cta-button ghost" href="#" id="subscribe-button">Subscribe for updates</a>
+                <p>Sharing discoveries, experiments, and insights from my coding journey. These posts auto-expand as I publish new content.</p>
+                <a class="cta-button ghost" href="#" id="subscribe-button">
+                    <i class="fas fa-bell"></i> Subscribe for updates
+                </a>
             </div>
             <div class="blog-grid" id="blog-grid">
                 <!-- Blog cards injected by script.js -->
@@ -163,36 +426,76 @@
 
         <section id="contact" class="panel contact">
             <div class="panel-header">
-                <h2>Contact</h2>
+                <h2><i class="fas fa-satellite-dish"></i> Contact</h2>
                 <span class="panel-tag">Open Channels</span>
             </div>
-            <div class="contact-grid">
-                <article class="card card-gloss">
-                    <h3>Let’s Build Together</h3>
-                    <p>
-                        Whether it is a collaboration, mentorship request, or a futuristic mission, I am ready to chat.
-                    </p>
-                    <a class="cta-button primary" href="mailto:taslimahmedtamim4u@gmail.com">Send Email</a>
-                </article>
-                <article class="card card-gloss contact-links">
-                    <h3>Connect</h3>
-                    <ul>
-                        <li><a href="https://github.com/taslimahmedtamim" target="_blank" rel="noopener">GitHub</a></li>
-                        <li><a href="https://www.linkedin.com/in/taslim-ahmed-tamim/" target="_blank" rel="noopener">LinkedIn</a></li>
-                    </ul>
-                    <address>
-                        Dhaka, Bangladesh
-                    </address>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <article class="card card-gloss contact-main">
+                        <div class="card-icon"><i class="fas fa-paper-plane"></i></div>
+                        <h3>Let's Build Together</h3>
+                        <p>
+                            Whether it's a collaboration, mentorship request, job opportunity, or a futuristic mission, I'm ready to chat. Let's create something amazing!
+                        </p>
+                        <a class="cta-button primary" href="mailto:taslimahmedtamim4u@gmail.com">
+                            <i class="fas fa-envelope"></i> Send Email
+                        </a>
+                    </article>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text">
+                                <span class="label">Email</span>
+                                <a href="mailto:taslimahmedtamim4u@gmail.com">taslimahmedtamim4u@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text">
+                                <span class="label">Location</span>
+                                <span>Dhaka, Bangladesh</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <article class="card card-gloss contact-social">
+                    <h3>Connect With Me</h3>
+                    <div class="social-grid">
+                        <a href="https://github.com/taslimahmedtamim" target="_blank" rel="noopener" class="social-card">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/taslim-ahmed-tamim/" target="_blank" rel="noopener" class="social-card">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://codeforces.com/profile/taslimahmedtamim" target="_blank" rel="noopener" class="social-card">
+                            <i class="fas fa-code"></i>
+                            <span>Codeforces</span>
+                        </a>
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="social-card">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
                 </article>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
-        <p>© <span id="current-year"></span> Taslim Ahmed Tamim. Crafted with curiosity.</p>
+        <div class="footer-content">
+            <div class="footer-logo">TAT</div>
+            <p>© <span id="current-year"></span> Taslim Ahmed Tamim. Crafted with <i class="fas fa-heart"></i> and curiosity.</p>
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-  
