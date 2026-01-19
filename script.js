@@ -4,10 +4,14 @@ class ParticleCanvas {
         this.canvas = document.getElementById('particle-canvas');
         if (!this.canvas) return;
         
-        this.ctx = this.canvas.getContext('2d');
+        this.ctx = this.canvas.getContext('2d', { alpha: true });
         this.particles = [];
-        this.particleCount = 80;
+        this.particleCount = 50; // Reduced for better performance
         this.mouse = { x: null, y: null, radius: 150 };
+        this.animationId = null;
+        this.lastTime = 0;
+        this.fps = 30; // Limit FPS for smoother scrolling
+        this.fpsInterval = 1000 / this.fps;
         
         this.init();
         this.animate();
@@ -32,7 +36,14 @@ class ParticleCanvas {
         this.canvas.height = window.innerHeight;
     }
     
-    animate() {
+    animate(currentTime = 0) {
+        this.animationId = requestAnimationFrame((time) => this.animate(time));
+        
+        // Limit frame rate for better performance
+        const elapsed = currentTime - this.lastTime;
+        if (elapsed < this.fpsInterval) return;
+        this.lastTime = currentTime - (elapsed % this.fpsInterval);
+        
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         this.particles.forEach(particle => {
@@ -41,7 +52,6 @@ class ParticleCanvas {
         });
         
         this.connectParticles();
-        requestAnimationFrame(() => this.animate());
     }
     
     connectParticles() {
@@ -51,8 +61,8 @@ class ParticleCanvas {
                 const dy = this.particles[a].y - this.particles[b].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                if (distance < 120) {
-                    const opacity = (1 - distance / 120) * 0.4;
+                if (distance < 100) {
+                    const opacity = (1 - distance / 100) * 0.3;
                     this.ctx.strokeStyle = `rgba(79, 125, 255, ${opacity})`;
                     this.ctx.lineWidth = 1;
                     this.ctx.beginPath();
