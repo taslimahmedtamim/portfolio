@@ -2,8 +2,6 @@
 
 A futuristic, interactive personal portfolio showcasing my skills, projects, and journey as a Full Stack Developer & Competitive Programmer.
 
-![Portfolio Preview](assets/tamim.png)
-
 ## ✨ Features
 
 - **Futuristic Design** - Dark theme with glowing accents, glassmorphism effects, and smooth animations
