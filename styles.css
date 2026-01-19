@@ -134,45 +134,45 @@ canvas#particle-canvas {
 .shape {
     position: absolute;
     border-radius: 50%;
-    opacity: 0.12;
+    opacity: 0.08;
     will-change: transform;
     backface-visibility: hidden;
 }
 
 .shape-1 {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    top: 5%;
-    right: 10%;
+    top: 60%;
+    right: 5%;
     animation: floatShape 8s ease-in-out infinite;
 }
 
 .shape-2 {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: var(--accent-secondary);
     bottom: 15%;
-    left: 8%;
+    left: 5%;
     animation: floatShape 6s ease-in-out infinite reverse;
 }
 
 .shape-3 {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border: 2px solid var(--accent-primary);
     background: transparent;
-    top: 35%;
+    top: 70%;
     left: 3%;
     animation: floatShape 10s ease-in-out infinite;
 }
 
 .shape-4 {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background: var(--accent-tertiary);
-    bottom: 25%;
-    right: 15%;
+    bottom: 30%;
+    right: 3%;
     animation: floatShape 7s ease-in-out infinite reverse;
 }
 
@@ -358,10 +358,10 @@ section {
 .hero {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(1.5rem, 3vw, 2rem);
+    gap: clamp(2rem, 4vw, 3rem);
     align-items: center;
-    padding-top: 2rem;
-    padding-bottom: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
     min-height: auto;
     position: relative;
 }
@@ -581,8 +581,8 @@ section {
 
 .image-container {
     position: relative;
-    width: 340px;
-    height: 340px;
+    width: 400px;
+    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -590,8 +590,8 @@ section {
 
 .image-ring {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 360px;
+    height: 360px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -615,8 +615,8 @@ section {
 
 .hero-visual img,
 .hero-visual-mobile img {
-    width: 280px;
-    height: 280px;
+    width: 340px;
+    height: 340px;
     display: block;
     border-radius: 50%;
     box-shadow: 0 25px 60px rgba(6, 10, 22, 0.5), 0 0 0 6px rgba(79, 125, 255, 0.25);
@@ -678,12 +678,12 @@ section {
 
 @media (min-width: 900px) {
     .hero {
-        grid-template-columns: 1fr 400px;
-        gap: clamp(2rem, 4vw, 3rem);
+        grid-template-columns: 1fr 450px;
+        gap: clamp(2rem, 5vw, 4rem);
         align-items: center;
-        min-height: calc(100vh - var(--header-height) - 4rem);
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        min-height: calc(100vh - var(--header-height) - 2rem);
+        padding-top: 3rem;
+        padding-bottom: 3rem;
     }
 
     .hero-content {
