@@ -120,11 +120,11 @@ new ParticleCanvas();
 
 // ========== Typed Text Animation ==========
 const heroTypedPhrases = [
-    "scalable products",
-    "immersive web apps",
-    "secure experiences",
-    "elegant solutions",
-    "competitive code"
+    "secure systems",
+    "scalable web apps",
+    "competitive code",
+    "cybersecurity labs",
+    "elegant solutions"
 ];
 
 let typedIndex = 0;
