@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taslim Ahmed Tamim | Futuristic Portfolio</title>
+    <title>Taslim Ahmed Tamim | Cybersecurity · CP · Full-Stack Developer</title>
+    <meta name="description" content="Portfolio of Taslim Ahmed Tamim — aspiring Cybersecurity professional, competitive programmer, and full-stack web developer (PERN). CSE student at Green University of Bangladesh.">
+    <meta name="keywords" content="Taslim Ahmed Tamim, cybersecurity, competitive programming, full-stack developer, portfolio, PERN, Codeforces, TryHackMe">
+    <meta name="author" content="Taslim Ahmed Tamim">
+    <meta name="theme-color" content="#030510">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Taslim Ahmed Tamim | Portfolio">
+    <meta property="og:description" content="Aspiring Cybersecurity professional, competitive programmer & full-stack web developer.">
+    <meta property="og:image" content="assets/tamim.png">
+    <meta property="og:url" content="https://taslimahmedtamim.github.io/portfolio/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@Taslim_Tamim4u">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,6 +25,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-ring"></div>
+            <span class="preloader-text">TAT</span>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Animated Background -->
     <canvas id="particle-canvas"></canvas>
     <div class="bg-glow bg-glow-1"></div>
@@ -29,6 +60,8 @@
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -80,21 +113,32 @@
                     <a href="https://github.com/taslimahmedtamim" target="_blank" rel="noopener" class="social-link" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/taslim-ahmed-tamim/" target="_blank" rel="noopener" class="social-link" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
+                    <a href="https://tryhackme.com/p/soloStriker" target="_blank" rel="noopener" class="social-link" title="TryHackMe">
+                        <i class="fas fa-shield-alt"></i>
                     </a>
-                    <a href="https://www.facebook.com/taslim.ahmed.tamim.2024" target="_blank" rel="noopener" class="social-link" title="Facebook">
-                        <i class="fab fa-facebook"></i>
+                    <a href="https://codeforces.com/profile/taslim_ahmed_tamim" target="_blank" rel="noopener" class="social-link" title="Codeforces">
+                        <i class="fas fa-code"></i>
                     </a>
-                    <a href="https://www.instagram.com/taslimahmedtamim/" target="_blank" rel="noopener" class="social-link" title="Instagram">
-                        <i class="fab fa-instagram"></i>
+                    <a href="https://vjudge.net/user/taslim_tamim" target="_blank" rel="noopener" class="social-link" title="VJudge">
+                        <i class="fas fa-gavel"></i>
                     </a>
-                    <a href="https://x.com/Taslim_Tamim4u" target="_blank" rel="noopener" class="social-link" title="X">
-                        <i class="fab fa-x-twitter"></i>
+                    <a href="https://leetcode.com/u/taslim_ahmed_tamim" target="_blank" rel="noopener" class="social-link" title="LeetCode">
+                        <i class="fas fa-laptop-code"></i>
                     </a>
-                    <a href="mailto:taslimahmedtamim4u@gmail.com" class="social-link" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-count="500">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Problems Solved</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="10">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Projects Built</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-count="50">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">THM Rooms</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-visual" aria-hidden="true">
@@ -264,6 +308,92 @@
             </div>
         </section>
 
+        <section id="experience" class="panel experience">
+            <div class="panel-header">
+                <h2><i class="fas fa-briefcase"></i> Experience</h2>
+                <span class="panel-tag">Journey Log</span>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="card timeline-card">
+                        <div class="timeline-date">2024 – Present</div>
+                        <h3>Competitive Programmer</h3>
+                        <h4>Codeforces · LeetCode · VJudge</h4>
+                        <p>Actively solving algorithmic problems, participating in rated contests, and building strong DSA fundamentals across multiple online judges.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="card timeline-card">
+                        <div class="timeline-date">2024 – Present</div>
+                        <h3>Cybersecurity Learner</h3>
+                        <h4>TryHackMe</h4>
+                        <p>Practicing hands-on cybersecurity labs covering Linux, networking, web exploitation, and penetration testing fundamentals.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="card timeline-card">
+                        <div class="timeline-date">2024 – Present</div>
+                        <h3>Full-Stack Web Developer</h3>
+                        <h4>Personal & Academic Projects</h4>
+                        <p>Designing and building end-to-end web applications using the PERN stack (PostgreSQL, Express.js, React, Node.js).</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="card timeline-card">
+                        <div class="timeline-date">2023 – Present</div>
+                        <h3>BSc in Computer Science & Engineering</h3>
+                        <h4>Green University of Bangladesh</h4>
+                        <p>Pursuing undergraduate studies with focus on algorithms, data structures, networking, and software engineering.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements" class="panel achievements">
+            <div class="panel-header">
+                <h2><i class="fas fa-trophy"></i> Achievements</h2>
+                <span class="panel-tag">Hall of Fame</span>
+            </div>
+            <div class="achievements-grid">
+                <article class="card achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="achievement-content">
+                        <h3>TryHackMe Progress</h3>
+                        <p>Completed hands-on cybersecurity labs and rooms covering Linux, networking, and web security.</p>
+                        <span class="achievement-badge"><i class="fas fa-link"></i> <a href="https://tryhackme.com/p/soloStriker" target="_blank" rel="noopener">View Profile</a></span>
+                    </div>
+                </article>
+                <article class="card achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-code"></i></div>
+                    <div class="achievement-content">
+                        <h3>500+ CP Problems Solved</h3>
+                        <p>Solved 500+ problems across Codeforces, LeetCode, and VJudge, covering a wide range of algorithmic topics.</p>
+                        <span class="achievement-badge"><i class="fas fa-star"></i> Competitive Programming</span>
+                    </div>
+                </article>
+                <article class="card achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
+                    <div class="achievement-content">
+                        <h3>Certificates</h3>
+                        <p>Add your certificates here — courses, bootcamps, workshops, and online certifications.</p>
+                        <span class="achievement-badge"><i class="fas fa-award"></i> Coming Soon</span>
+                    </div>
+                </article>
+                <article class="card achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-users"></i></div>
+                    <div class="achievement-content">
+                        <h3>Contest Participation</h3>
+                        <p>Participated in multiple Codeforces rated contests and university-level programming competitions.</p>
+                        <span class="achievement-badge"><i class="fas fa-flag-checkered"></i> Competitive</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <section id="projects" class="panel projects">
             <div class="panel-header">
                 <h2><i class="fas fa-folder-open"></i> Projects</h2>
@@ -399,16 +529,89 @@
                 <span class="panel-tag">Open Channels</span>
             </div>
             <div class="contact-content">
-                <div class="contact-info">
+                <div class="contact-left">
                     <article class="card card-gloss contact-main">
                         <div class="card-icon"><i class="fas fa-paper-plane"></i></div>
                         <h3>Let's Build Together</h3>
                         <p>
                             Whether it's a collaboration, mentorship request, job opportunity, or a futuristic mission, I'm ready to chat. Let's create something amazing!
                         </p>
-                        <a class="cta-button primary" href="mailto:taslimahmedtamim4u@gmail.com">
-                            <i class="fas fa-envelope"></i> Send Email
-                        </a>
+                    </article>
+                    <form class="contact-form" action="https://formsubmit.co/taslimahmedtamim4u@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Portfolio Contact">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="box">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button primary form-submit">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-right">
+                    <article class="card card-gloss contact-social">
+                        <h3><i class="fas fa-address-book"></i> Connect With Me</h3>
+                        <div class="social-grid">
+                            <a href="https://github.com/taslimahmedtamim" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/taslim-ahmed-tamim/" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="mailto:taslimahmedtamim4u@gmail.com" class="social-card">
+                                <i class="fas fa-envelope"></i>
+                                <span>Mail</span>
+                            </a>
+                            <a href="https://x.com/Taslim_Tamim4u" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-x-twitter"></i>
+                                <span>X</span>
+                            </a>
+                            <a href="https://www.facebook.com/taslim.ahmed.tamim.2024" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/taslimahmedtamim/" target="_blank" rel="noopener" class="social-card">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </article>
+                    <article class="card card-gloss platform-profiles">
+                        <h3><i class="fas fa-terminal"></i> Skill Platforms</h3>
+                        <div class="platform-grid">
+                            <a href="https://tryhackme.com/p/soloStriker" target="_blank" rel="noopener" class="platform-card">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>TryHackMe</span>
+                                <small>soloStriker</small>
+                            </a>
+                            <a href="https://codeforces.com/profile/taslim_ahmed_tamim" target="_blank" rel="noopener" class="platform-card">
+                                <i class="fas fa-code"></i>
+                                <span>Codeforces</span>
+                                <small>taslim_ahmed_tamim</small>
+                            </a>
+                            <a href="https://leetcode.com/u/taslim_ahmed_tamim" target="_blank" rel="noopener" class="platform-card">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>LeetCode</span>
+                                <small>taslim_ahmed_tamim</small>
+                            </a>
+                            <a href="https://vjudge.net/user/taslim_tamim" target="_blank" rel="noopener" class="platform-card">
+                                <i class="fas fa-gavel"></i>
+                                <span>VJudge</span>
+                                <small>taslim_tamim</small>
+                            </a>
+                        </div>
                     </article>
                     <div class="contact-details">
                         <div class="contact-item">
@@ -427,56 +630,6 @@
                         </div>
                     </div>
                 </div>
-                <article class="card card-gloss contact-social">
-                    <h3><i class="fas fa-address-book"></i> Connect With Me</h3>
-                    <div class="social-grid">
-                        <a href="https://github.com/taslimahmedtamim" target="_blank" rel="noopener" class="social-card">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/taslim-ahmed-tamim/" target="_blank" rel="noopener" class="social-card">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://www.facebook.com/taslim.ahmed.tamim.2024" target="_blank" rel="noopener" class="social-card">
-                            <i class="fab fa-facebook"></i>
-                            <span>Facebook</span>
-                        </a>
-                        <a href="https://www.instagram.com/taslimahmedtamim/" target="_blank" rel="noopener" class="social-card">
-                            <i class="fab fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://x.com/Taslim_Tamim4u" target="_blank" rel="noopener" class="social-card">
-                            <i class="fab fa-x-twitter"></i>
-                            <span>X</span>
-                        </a>
-                    </div>
-                </article>
-                <article class="card card-gloss platform-profiles">
-                    <h3><i class="fas fa-terminal"></i> Skill Platforms</h3>
-                    <div class="platform-grid">
-                        <a href="https://tryhackme.com/p/soloStriker" target="_blank" rel="noopener" class="platform-card">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>TryHackMe</span>
-                            <small>soloStriker</small>
-                        </a>
-                        <a href="https://codeforces.com/profile/taslim_ahmed_tamim" target="_blank" rel="noopener" class="platform-card">
-                            <i class="fas fa-code"></i>
-                            <span>Codeforces</span>
-                            <small>taslim_ahmed_tamim</small>
-                        </a>
-                        <a href="https://leetcode.com/u/taslim_ahmed_tamim" target="_blank" rel="noopener" class="platform-card">
-                            <i class="fas fa-laptop-code"></i>
-                            <span>LeetCode</span>
-                            <small>taslim_ahmed_tamim</small>
-                        </a>
-                        <a href="https://vjudge.net/user/taslim_tamim" target="_blank" rel="noopener" class="platform-card">
-                            <i class="fas fa-gavel"></i>
-                            <span>VJudge</span>
-                            <small>taslim_tamim</small>
-                        </a>
-                    </div>
-                </article>
             </div>
         </section>
     </main>
@@ -484,7 +637,15 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-logo">TAT</div>
-            <p>© <span id="current-year"></span> Taslim Ahmed Tamim. Crafted with <i class="fas fa-heart"></i> and curiosity.</p>
+            <p>&copy; <span id="current-year"></span> Taslim Ahmed Tamim. Crafted with <i class="fas fa-heart"></i> and curiosity.</p>
+            <div class="footer-social">
+                <a href="https://github.com/taslimahmedtamim" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/taslim-ahmed-tamim/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:taslimahmedtamim4u@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://x.com/Taslim_Tamim4u" target="_blank" rel="noopener" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.facebook.com/taslim.ahmed.tamim.2024" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/taslimahmedtamim/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
             <div class="footer-links">
                 <a href="#hero">Home</a>
                 <a href="#about">About</a>

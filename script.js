@@ -1,3 +1,91 @@
+// ========== Preloader ==========
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => preloader.classList.add('loaded'), 400);
+    }
+});
+
+// ========== Custom Cursor ==========
+function setupCustomCursor() {
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    if (!dot || !ring) return;
+
+    // Hide on touch devices
+    if ('ontouchstart' in window) {
+        dot.style.display = 'none';
+        ring.style.display = 'none';
+        return;
+    }
+
+    document.body.style.cursor = 'none';
+
+    document.addEventListener('mousemove', (e) => {
+        dot.style.left = e.clientX + 'px';
+        dot.style.top = e.clientY + 'px';
+        ring.style.left = e.clientX + 'px';
+        ring.style.top = e.clientY + 'px';
+    });
+
+    // Add hover effect on interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .cta-button, .social-link, .filter-btn, .project-btn, .social-card, .platform-card, input, textarea');
+    interactiveElements.forEach(el => {
+        el.style.cursor = 'none';
+        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+    });
+}
+
+setupCustomCursor();
+
+// ========== Scroll to Top Button ==========
+function setupScrollTop() {
+    const btn = document.getElementById('scroll-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+setupScrollTop();
+
+// ========== Active Nav on Scroll ==========
+function setupActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.site-nav a');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, {
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+    });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+setupActiveNav();
+
 // ========== Particle Canvas Animation ==========
 class ParticleCanvas {
     constructor() {
