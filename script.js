@@ -21,19 +21,47 @@ function setupCustomCursor() {
 
     document.body.style.cursor = 'none';
 
+    // Dot follows mouse instantly, ring trails behind smoothly
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+    const ease = 0.15;
+
     document.addEventListener('mousemove', (e) => {
-        dot.style.left = e.clientX + 'px';
-        dot.style.top = e.clientY + 'px';
-        ring.style.left = e.clientX + 'px';
-        ring.style.top = e.clientY + 'px';
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.transform = `translate(${mouseX - 3}px, ${mouseY - 3}px)`;
     });
 
-    // Add hover effect on interactive elements
+    function animateRing() {
+        ringX += (mouseX - ringX) * ease;
+        ringY += (mouseY - ringY) * ease;
+        ring.style.transform = `translate(${ringX - ring.offsetWidth / 2}px, ${ringY - ring.offsetHeight / 2}px)`;
+        requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Click effect
+    document.addEventListener('mousedown', () => {
+        dot.classList.add('click');
+        ring.classList.add('click');
+    });
+    document.addEventListener('mouseup', () => {
+        dot.classList.remove('click');
+        ring.classList.remove('click');
+    });
+
+    // Hover effect on interactive elements
     const interactiveElements = document.querySelectorAll('a, button, .cta-button, .social-link, .filter-btn, .project-btn, .social-card, .platform-card, input, textarea');
     interactiveElements.forEach(el => {
         el.style.cursor = 'none';
-        el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+        el.addEventListener('mouseenter', () => {
+            ring.classList.add('hover');
+            dot.classList.add('hover');
+        });
+        el.addEventListener('mouseleave', () => {
+            ring.classList.remove('hover');
+            dot.classList.remove('hover');
+        });
     });
 }
 
@@ -44,13 +72,16 @@ function setupScrollTop() {
     const btn = document.getElementById('scroll-top');
     if (!btn) return;
 
+    let scrollTicking = false;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-            btn.classList.add('visible');
-        } else {
-            btn.classList.remove('visible');
+        if (!scrollTicking) {
+            requestAnimationFrame(() => {
+                btn.classList.toggle('visible', window.scrollY > 400);
+                scrollTicking = false;
+            });
+            scrollTicking = true;
         }
-    });
+    }, { passive: true });
 
     btn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -94,20 +125,27 @@ class ParticleCanvas {
         
         this.ctx = this.canvas.getContext('2d', { alpha: true });
         this.particles = [];
-        this.particleCount = 50; // Reduced for better performance
-        this.mouse = { x: null, y: null, radius: 150 };
+        this.particleCount = 30;
+        this.mouse = { x: null, y: null, radius: 120 };
         this.animationId = null;
         this.lastTime = 0;
-        this.fps = 30; // Limit FPS for smoother scrolling
+        this.fps = 24;
         this.fpsInterval = 1000 / this.fps;
+        this.isVisible = true;
         
         this.init();
         this.animate();
         
-        window.addEventListener('resize', () => this.resize());
+        window.addEventListener('resize', () => this.resize(), { passive: true });
         window.addEventListener('mousemove', (e) => {
             this.mouse.x = e.x;
             this.mouse.y = e.y;
+        }, { passive: true });
+
+        // Pause when tab is not visible
+        document.addEventListener('visibilitychange', () => {
+            this.isVisible = !document.hidden;
+            if (this.isVisible) this.animate();
         });
     }
     
@@ -125,32 +163,33 @@ class ParticleCanvas {
     }
     
     animate(currentTime = 0) {
+        if (!this.isVisible) return;
         this.animationId = requestAnimationFrame((time) => this.animate(time));
         
-        // Limit frame rate for better performance
         const elapsed = currentTime - this.lastTime;
         if (elapsed < this.fpsInterval) return;
         this.lastTime = currentTime - (elapsed % this.fpsInterval);
         
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
-        this.particles.forEach(particle => {
-            particle.update(this.mouse);
-            particle.draw(this.ctx);
-        });
+        for (let i = 0; i < this.particles.length; i++) {
+            this.particles[i].update(this.mouse);
+            this.particles[i].draw(this.ctx);
+        }
         
         this.connectParticles();
     }
     
     connectParticles() {
-        for (let a = 0; a < this.particles.length; a++) {
-            for (let b = a + 1; b < this.particles.length; b++) {
+        const len = this.particles.length;
+        for (let a = 0; a < len; a++) {
+            for (let b = a + 1; b < len; b++) {
                 const dx = this.particles[a].x - this.particles[b].x;
                 const dy = this.particles[a].y - this.particles[b].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+                const distSq = dx * dx + dy * dy;
                 
-                if (distance < 100) {
-                    const opacity = (1 - distance / 100) * 0.3;
+                if (distSq < 10000) {
+                    const opacity = (1 - Math.sqrt(distSq) / 100) * 0.3;
                     this.ctx.strokeStyle = `rgba(79, 125, 255, ${opacity})`;
                     this.ctx.lineWidth = 1;
                     this.ctx.beginPath();
@@ -516,15 +555,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ========== Header Background on Scroll ==========
 const header = document.querySelector('.site-header');
+let headerTicking = false;
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.style.background = 'rgba(3, 5, 18, 0.98)';
-        header.style.boxShadow = '0 10px 40px rgba(2, 7, 20, 0.6)';
-    } else {
-        header.style.background = 'linear-gradient(180deg, rgba(3, 5, 18, 0.95) 0%, rgba(3, 5, 18, 0.8) 100%)';
-        header.style.boxShadow = '0 6px 30px rgba(2, 7, 20, 0.5)';
+    if (!headerTicking) {
+        requestAnimationFrame(() => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            headerTicking = false;
+        });
+        headerTicking = true;
     }
-});
+}, { passive: true });
 
 // Add CSS animation for project filter
 const style = document.createElement('style');
