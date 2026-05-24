@@ -1630,8 +1630,82 @@ section {
 
 @media (min-width: 768px) {
     .contact-content {
-        grid-template-columns: 1.1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         align-items: start;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ========== Tablet View Optimization (768px - 899px) ========== */
+@media (min-width: 768px) and (max-width: 899px) {
+    .hero-content {
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .about-intro {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .panel {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 100%;
+        padding: 1.2rem;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        align-items: start;
+    }
+
+    .contact-left {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .contact-right {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .card {
+        width: 100%;
+        overflow: hidden;
+        padding: 1.2rem;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .platform-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.7rem;
+    }
+
+    .platform-card {
+        padding: 0.9rem 0.6rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -2004,6 +2078,28 @@ section {
     }
 }
 
+@media (max-width: 899px) {
+    .hero-visual {
+        display: none;
+    }
+
+    .hero-visual-mobile {
+        display: flex;
+        justify-content: center;
+        margin-block: 1.5rem;
+    }
+
+    .hero-visual-mobile .image-ring {
+        width: 280px;
+        height: 280px;
+    }
+
+    .hero-visual-mobile img {
+        width: 260px;
+        height: 260px;
+    }
+}
+
 @media (max-width: 640px) {
     .hero {
         text-align: center;
@@ -2024,16 +2120,6 @@ section {
 
     .hero-stats {
         justify-content: center;
-    }
-
-    .hero-visual {
-        display: none;
-    }
-
-    .hero-visual-mobile {
-        display: flex;
-        justify-content: center;
-        margin-block: 1.5rem;
     }
 
     .hero-visual-mobile .image-ring {
@@ -2061,6 +2147,45 @@ section {
     .skills-grid,
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .platform-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-details {
+        gap: 0.8rem;
+    }
+
+    .contact-item {
+        padding: 0.8rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .contact-text a,
+    .contact-text span:not(.label) {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .social-card {
+        padding: 1rem;
+    }
+
+    .platform-card {
+        padding: 1rem 0.6rem;
     }
 }
 

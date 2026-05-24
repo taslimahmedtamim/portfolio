@@ -125,13 +125,14 @@ class ParticleCanvas {
         
         this.ctx = this.canvas.getContext('2d', { alpha: true });
         this.particles = [];
-        this.particleCount = 30;
-        this.mouse = { x: null, y: null, radius: 120 };
+        this.particleCount = 25;
+        this.mouse = { x: null, y: null, radius: 150 };
         this.animationId = null;
         this.lastTime = 0;
-        this.fps = 24;
+        this.fps = 60;
         this.fpsInterval = 1000 / this.fps;
         this.isVisible = true;
+        this.time = 0;
         
         this.init();
         this.animate();
@@ -170,10 +171,12 @@ class ParticleCanvas {
         if (elapsed < this.fpsInterval) return;
         this.lastTime = currentTime - (elapsed % this.fpsInterval);
         
+        this.time += elapsed / 1000;
+        
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         for (let i = 0; i < this.particles.length; i++) {
-            this.particles[i].update(this.mouse);
+            this.particles[i].update(this.mouse, this.time);
             this.particles[i].draw(this.ctx);
         }
         
@@ -187,10 +190,22 @@ class ParticleCanvas {
                 const dx = this.particles[a].x - this.particles[b].x;
                 const dy = this.particles[a].y - this.particles[b].y;
                 const distSq = dx * dx + dy * dy;
+                const maxDist = 10000;
                 
-                if (distSq < 10000) {
-                    const opacity = (1 - Math.sqrt(distSq) / 100) * 0.3;
-                    this.ctx.strokeStyle = `rgba(79, 125, 255, ${opacity})`;
+                if (distSq < maxDist) {
+                    const dist = Math.sqrt(distSq);
+                    const opacity = (1 - dist / Math.sqrt(maxDist)) * 0.3;
+                    
+                    // Gradient line effect
+                    const gradient = this.ctx.createLinearGradient(
+                        this.particles[a].x, this.particles[a].y,
+                        this.particles[b].x, this.particles[b].y
+                    );
+                    gradient.addColorStop(0, `rgba(79, 125, 255, ${opacity * 1.2})`);
+                    gradient.addColorStop(0.5, `rgba(33, 199, 255, ${opacity * 0.8})`);
+                    gradient.addColorStop(1, `rgba(155, 201, 255, ${opacity * 1.2})`);
+                    
+                    this.ctx.strokeStyle = gradient;
                     this.ctx.lineWidth = 1;
                     this.ctx.beginPath();
                     this.ctx.moveTo(this.particles[a].x, this.particles[a].y);
@@ -207,20 +222,40 @@ class Particle {
         this.canvas = canvas;
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
-        this.color = `rgba(${79 + Math.random() * 50}, ${125 + Math.random() * 80}, 255, ${Math.random() * 0.5 + 0.3})`;
+        this.baseSize = Math.random() * 1.5 + 0.8;
+        this.size = this.baseSize;
+        this.speedX = (Math.random() - 0.5) * 0.4;
+        this.speedY = (Math.random() - 0.5) * 0.4;
+        this.angle = Math.random() * Math.PI * 2;
+        this.angularSpeed = (Math.random() - 0.5) * 0.02;
+        
+        // Color gradient - cyan, blue, purple spectrum
+        const colorIdx = Math.random();
+        if (colorIdx < 0.33) {
+            this.baseColor = { r: 33, g: 199, b: 255 }; // Cyan
+        } else if (colorIdx < 0.66) {
+            this.baseColor = { r: 79, g: 125, b: 255 }; // Blue
+        } else {
+            this.baseColor = { r: 155, g: 201, b: 255 }; // Light Blue
+        }
+        this.opacity = Math.random() * 0.25 + 0.2;
     }
     
-    update(mouse) {
+    update(mouse, time) {
         this.x += this.speedX;
         this.y += this.speedY;
+        this.angle += this.angularSpeed;
         
-        if (this.x > this.canvas.width || this.x < 0) this.speedX *= -1;
-        if (this.y > this.canvas.height || this.y < 0) this.speedY *= -1;
+        // Gentle oscillation
+        this.size = this.baseSize + Math.sin(time * 2 + this.angle) * 0.3;
         
-        // Mouse interaction
+        // Boundary wrapping with damping
+        if (this.x > this.canvas.width) this.x = 0;
+        if (this.x < 0) this.x = this.canvas.width;
+        if (this.y > this.canvas.height) this.y = 0;
+        if (this.y < 0) this.y = this.canvas.height;
+        
+        // Mouse interaction with smooth easing
         if (mouse.x && mouse.y) {
             const dx = mouse.x - this.x;
             const dy = mouse.y - this.y;
@@ -228,17 +263,34 @@ class Particle {
             
             if (distance < mouse.radius) {
                 const force = (mouse.radius - distance) / mouse.radius;
-                this.x -= dx * force * 0.02;
-                this.y -= dy * force * 0.02;
+                const pushStrength = force * 0.015;
+                this.speedX -= dx * pushStrength;
+                this.speedY -= dy * pushStrength;
+                
+                // Enhance opacity on interaction
+                this.opacity = Math.min(this.opacity + force * 0.2, 0.8);
             }
         }
+        
+        // Friction for smooth movement
+        this.speedX *= 0.99;
+        this.speedY *= 0.99;
     }
     
     draw(ctx) {
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = `rgba(${this.baseColor.r}, ${this.baseColor.g}, ${this.baseColor.b}, ${this.opacity})`;
+        
+        // Glow effect
+        ctx.shadowColor = `rgba(${this.baseColor.r}, ${this.baseColor.g}, ${this.baseColor.b}, 0.3)`;
+        ctx.shadowBlur = 4;
+        
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
+        
+        // Reset shadow
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
     }
 }
 
@@ -246,23 +298,41 @@ class Particle {
 new ParticleCanvas();
 
 // ========== Typed Text Animation ==========
+const heroPrefixes = [
+    "I secure",
+    "I defend",
+    "I analyze",
+    "I respond to",
+    "I detect",
+    "I hunt"
+];
+
 const heroTypedPhrases = [
     "secure systems",
-    "scalable web apps",
-    "competitive code",
-    "cybersecurity labs",
-    "elegant solutions"
+    "threat intelligence",
+    "incident response",
+    "vulnerability assessments",
+    "SIEM solutions",
+    "network defense"
 ];
 
 let typedIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 const typedSpan = document.querySelector(".typed-text");
+const typedPrefix = document.querySelector(".typed-prefix");
 
 function typeLoop() {
     if (!typedSpan) return;
 
-    const currentPhrase = heroTypedPhrases[typedIndex % heroTypedPhrases.length];
+    const currentIndex = typedIndex % heroTypedPhrases.length;
+    const currentPrefix = heroPrefixes[currentIndex];
+    const currentPhrase = heroTypedPhrases[currentIndex];
+    
+    if (typedPrefix) {
+        typedPrefix.textContent = currentPrefix + " ";
+    }
+
     const displayed = isDeleting
         ? currentPhrase.slice(0, Math.max(0, charIndex - 1))
         : currentPhrase.slice(0, charIndex + 1);
@@ -323,26 +393,6 @@ function animateNumber(element, target) {
 }
 
 animateStats();
-
-// ========== Skill Progress Bars Animation ==========
-function animateSkillBars() {
-    const skillBars = document.querySelectorAll('.skill-progress');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const bar = entry.target;
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width;
-                observer.unobserve(bar);
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    skillBars.forEach(bar => observer.observe(bar));
-}
-
-animateSkillBars();
 
 // ========== Project Filter ==========
 function setupProjectFilter() {
