@@ -62,8 +62,10 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#experience">Journey</a></li>
+                    <li><a href="#services">Services</a></li>
                     <li><a href="#achievements">Achievements</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#blog">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -367,6 +369,43 @@
             </div>
         </section>
 
+        <section id="services" class="panel services">
+            <div class="panel-header">
+                <h2><i class="fas fa-server"></i> Services</h2>
+                <span class="panel-tag">What I Offer</span>
+            </div>
+            <div class="panel-grid about-cards">
+                <article class="card card-gloss">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h3>Full Stack Web Development</h3>
+                    <p>
+                        Building responsive, scalable, and secure full-stack web applications. Delivering modern UI/UX with robust backend architecture using technologies like React, Next.js, Node.js, and PostgreSQL.
+                    </p>
+                </article>
+                <article class="card card-gloss">
+                    <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Cyber Security Services</h3>
+                    <p>
+                        Comprehensive cybersecurity solutions focusing on defensive security, threat analysis, and incident response to safeguard your digital assets.
+                    </p>
+                </article>
+                <article class="card card-gloss">
+                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>SOC Lab Setup & Management</h3>
+                    <p>
+                        Expertise in setting up and configuring Security Operations Center (SOC) environments including Wazuh, Tracecat, Yara, IDS/IPS, SIEM, SOAR, Cortex, VirusTotal, and The Hive.
+                    </p>
+                </article>
+                <article class="card card-gloss">
+                    <div class="card-icon"><i class="fas fa-user-shield"></i></div>
+                    <h3>Security Analyst Consultation</h3>
+                    <p>
+                        Drawing on experience as a Cyber Security Analyst Intern at Bengal Info Sec to provide vulnerability assessments, penetration testing, and security posture improvements.
+                    </p>
+                </article>
+            </div>
+        </section>
+
         <section id="achievements" class="panel achievements">
             <div class="panel-header">
                 <h2><i class="fas fa-trophy"></i> Achievements</h2>
@@ -436,6 +475,27 @@
                 <button class="filter-btn" data-filter="cp">Competitive</button>
             </div>
             <div class="projects-grid">
+                <article class="card project-card" data-category="web" style="border: 1px solid var(--accent-secondary); box-shadow: 0 0 15px rgba(33, 199, 255, 0.2);">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://uconnect.up.railway.app" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-status live">Featured Live Project</div>
+                        <h3 style="color: var(--accent-secondary);">UConnect</h3>
+                        <p>A comprehensive platform designed to seamlessly connect students, streamline academic collaboration, and foster a vibrant university community.</p>
+                        <div class="project-tech">
+                            <span>Next.js</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+                </article>
+
                 <article class="card project-card" data-category="web">
                     <div class="project-image">
                         <div class="project-placeholder">
@@ -513,7 +573,7 @@
             </div>
         </section>
 
-        <section id="blog" class="panel blog" style="display:none" aria-hidden="true">
+        <section id="blog" class="panel blog">
             <div class="panel-header">
                 <h2><i class="fas fa-rss"></i> Blog</h2>
                 <span class="panel-tag">Signal Log</span>
@@ -654,7 +714,9 @@
             <div class="footer-links">
                 <a href="#hero">Home</a>
                 <a href="#about">About</a>
+                <a href="#services">Services</a>
                 <a href="#projects">Projects</a>
+                <a href="#blog">Blog</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
