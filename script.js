@@ -6,72 +6,7 @@ window.addEventListener('load', () => {
     }
 });
 
-// ========== Custom Cursor ==========
-function setupCustomCursor() {
-    const dot = document.getElementById('cursor-dot');
-    const ring = document.getElementById('cursor-ring');
-    if (!dot || !ring) return;
 
-    // Hide on touch devices
-    if ('ontouchstart' in window) {
-        dot.style.display = 'none';
-        ring.style.display = 'none';
-        return;
-    }
-
-    document.body.style.cursor = 'none';
-
-    // Dot follows mouse instantly, ring trails behind smoothly
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
-    const ease = 0.15;
-
-    let dotX = 0, dotY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    function animateCursor() {
-        // Smoothly animate dot towards mouse but very fast, or just instantly
-        dotX += (mouseX - dotX) * 0.5;
-        dotY += (mouseY - dotY) * 0.5;
-        dot.style.transform = `translate(${dotX - 3}px, ${dotY - 3}px)`;
-
-        ringX += (mouseX - ringX) * ease;
-        ringY += (mouseY - ringY) * ease;
-        ring.style.transform = `translate(${ringX - ring.offsetWidth / 2}px, ${ringY - ring.offsetHeight / 2}px)`;
-        requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    // Click effect
-    document.addEventListener('mousedown', () => {
-        dot.classList.add('click');
-        ring.classList.add('click');
-    });
-    document.addEventListener('mouseup', () => {
-        dot.classList.remove('click');
-        ring.classList.remove('click');
-    });
-
-    // Hover effect on interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .cta-button, .social-link, .filter-btn, .project-btn, .social-card, .platform-card, input, textarea');
-    interactiveElements.forEach(el => {
-        el.style.cursor = 'none';
-        el.addEventListener('mouseenter', () => {
-            ring.classList.add('hover');
-            dot.classList.add('hover');
-        });
-        el.addEventListener('mouseleave', () => {
-            ring.classList.remove('hover');
-            dot.classList.remove('hover');
-        });
-    });
-}
-
-setupCustomCursor();
 
 // ========== Scroll to Top Button ==========
 function setupScrollTop() {
