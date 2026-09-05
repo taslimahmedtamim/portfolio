@@ -26,19 +26,25 @@ function setupCustomCursor() {
     let ringX = 0, ringY = 0;
     const ease = 0.15;
 
+    let dotX = 0, dotY = 0;
+
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        dot.style.transform = `translate(${mouseX - 3}px, ${mouseY - 3}px)`;
     });
 
-    function animateRing() {
+    function animateCursor() {
+        // Smoothly animate dot towards mouse but very fast, or just instantly
+        dotX += (mouseX - dotX) * 0.5;
+        dotY += (mouseY - dotY) * 0.5;
+        dot.style.transform = `translate(${dotX - 3}px, ${dotY - 3}px)`;
+
         ringX += (mouseX - ringX) * ease;
         ringY += (mouseY - ringY) * ease;
         ring.style.transform = `translate(${ringX - ring.offsetWidth / 2}px, ${ringY - ring.offsetHeight / 2}px)`;
-        requestAnimationFrame(animateRing);
+        requestAnimationFrame(animateCursor);
     }
-    animateRing();
+    animateCursor();
 
     // Click effect
     document.addEventListener('mousedown', () => {
@@ -196,16 +202,8 @@ class ParticleCanvas {
                     const dist = Math.sqrt(distSq);
                     const opacity = (1 - dist / Math.sqrt(maxDist)) * 0.3;
                     
-                    // Gradient line effect
-                    const gradient = this.ctx.createLinearGradient(
-                        this.particles[a].x, this.particles[a].y,
-                        this.particles[b].x, this.particles[b].y
-                    );
-                    gradient.addColorStop(0, `rgba(79, 125, 255, ${opacity * 1.2})`);
-                    gradient.addColorStop(0.5, `rgba(33, 199, 255, ${opacity * 0.8})`);
-                    gradient.addColorStop(1, `rgba(155, 201, 255, ${opacity * 1.2})`);
-                    
-                    this.ctx.strokeStyle = gradient;
+                    // Simple solid line for better performance
+                    this.ctx.strokeStyle = `rgba(79, 125, 255, ${opacity})`;
                     this.ctx.lineWidth = 1;
                     this.ctx.beginPath();
                     this.ctx.moveTo(this.particles[a].x, this.particles[a].y);
@@ -280,17 +278,9 @@ class Particle {
     draw(ctx) {
         ctx.fillStyle = `rgba(${this.baseColor.r}, ${this.baseColor.g}, ${this.baseColor.b}, ${this.opacity})`;
         
-        // Glow effect
-        ctx.shadowColor = `rgba(${this.baseColor.r}, ${this.baseColor.g}, ${this.baseColor.b}, 0.3)`;
-        ctx.shadowBlur = 4;
-        
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
-        
-        // Reset shadow
-        ctx.shadowColor = 'transparent';
-        ctx.shadowBlur = 0;
     }
 }
 
