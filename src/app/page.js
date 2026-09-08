@@ -64,13 +64,38 @@ export default function Home() {
             <div className="hero-content">
                 <div className="hero-visual-mobile">
                     <div className="hex-profile-container">
+                        {/* Outer Sci-Fi Target HUD */}
+                        <div className="hologram-ring ring-outer-hud">
+                            <svg className="hud-svg" viewBox="0 0 500 500">
+                                <circle cx="250" cy="250" r="235" className="hud-circle-dashed" />
+                                <circle cx="250" cy="250" r="215" className="hud-circle-arc" />
+                                <text x="250" y="22" className="hud-deg">000°</text>
+                                <text x="482" y="254" className="hud-deg">090°</text>
+                                <text x="250" y="492" className="hud-deg">180°</text>
+                                <text x="18" y="254" className="hud-deg">270°</text>
+                            </svg>
+                        </div>
+                        
                         <div className="hologram-ring ring-1"></div>
                         <div className="hologram-ring ring-2"></div>
                         <div className="hologram-glow"></div>
 
+                        {/* Main Hexagon Card Frame */}
                         <div className="hex-card-frame">
                             <div className="hex-bg-spotlight"></div>
                             <div className="hex-grid-pattern"></div>
+
+                            {/* SVG Neon Laser Border */}
+                            <svg className="hex-laser-svg" viewBox="0 0 330 380">
+                                <polygon points="165,4 326,95 326,285 165,376 4,285 4,95" className="laser-path-bg" />
+                                <polygon points="165,4 326,95 326,285 165,376 4,285 4,95" className="laser-path-beam" />
+                                <circle cx="165" cy="4" r="4" className="hex-node" />
+                                <circle cx="326" cy="95" r="4" className="hex-node" />
+                                <circle cx="326" cy="285" r="4" className="hex-node" />
+                                <circle cx="165" cy="376" r="4" className="hex-node" />
+                                <circle cx="4" cy="285" r="4" className="hex-node" />
+                                <circle cx="4" cy="95" r="4" className="hex-node" />
+                            </svg>
                             
                             <div className="hex-img-wrapper">
                                 <img 
@@ -145,13 +170,38 @@ export default function Home() {
             </div>
             <div className="hero-visual" aria-hidden="true">
                 <div className="hex-profile-container">
+                    {/* Outer Sci-Fi Target HUD */}
+                    <div className="hologram-ring ring-outer-hud">
+                        <svg className="hud-svg" viewBox="0 0 500 500">
+                            <circle cx="250" cy="250" r="235" className="hud-circle-dashed" />
+                            <circle cx="250" cy="250" r="215" className="hud-circle-arc" />
+                            <text x="250" y="22" className="hud-deg">000°</text>
+                            <text x="482" y="254" className="hud-deg">090°</text>
+                            <text x="250" y="492" className="hud-deg">180°</text>
+                            <text x="18" y="254" className="hud-deg">270°</text>
+                        </svg>
+                    </div>
+                    
                     <div className="hologram-ring ring-1"></div>
                     <div className="hologram-ring ring-2"></div>
                     <div className="hologram-glow"></div>
 
+                    {/* Main Hexagon Card Frame */}
                     <div className="hex-card-frame">
                         <div className="hex-bg-spotlight"></div>
                         <div className="hex-grid-pattern"></div>
+
+                        {/* SVG Neon Laser Border */}
+                        <svg className="hex-laser-svg" viewBox="0 0 330 380">
+                            <polygon points="165,4 326,95 326,285 165,376 4,285 4,95" className="laser-path-bg" />
+                            <polygon points="165,4 326,95 326,285 165,376 4,285 4,95" className="laser-path-beam" />
+                            <circle cx="165" cy="4" r="4" className="hex-node" />
+                            <circle cx="326" cy="95" r="4" className="hex-node" />
+                            <circle cx="326" cy="285" r="4" className="hex-node" />
+                            <circle cx="165" cy="376" r="4" className="hex-node" />
+                            <circle cx="4" cy="285" r="4" className="hex-node" />
+                            <circle cx="4" cy="95" r="4" className="hex-node" />
+                        </svg>
                         
                         <div className="hex-img-wrapper">
                             <img 
@@ -380,7 +430,7 @@ export default function Home() {
                 <h2><i className="fas fa-server"></i> Services</h2>
                 <span className="panel-tag">What I Offer</span>
             </div>
-            <div className="panel-grid about-cards">
+            <div className="services-grid">
                 <article className="card card-gloss">
                     <div className="card-icon"><i className="fas fa-network-wired"></i></div>
                     <h3>Network Security & Monitoring</h3>
@@ -475,46 +525,78 @@ export default function Home() {
                 <span className="panel-tag">Command Center</span>
             </div>
             <div className="projects-filter">
-                <button className="filter-btn active" data-filter="all">All</button>
-                <button className="filter-btn" data-filter="web">Web Apps</button>
-                <button className="filter-btn" data-filter="tools">Tools</button>
-                <button className="filter-btn" data-filter="cp">Competitive</button>
+                <button className="filter-btn active" data-filter="all">All Projects</button>
+                <button className="filter-btn" data-filter="tools">Security & Tools</button>
+                <button className="filter-btn" data-filter="web">Web Platforms</button>
             </div>
             <div className="projects-grid">
-                <article className="card project-card" data-category="web" style={{'border': '1px solid var(--accent-secondary)', 'box-shadow': '0 0 15px rgba(33, 199, 255, 0.2)'}}>
+                {/* PhishGuard - Featured Cybersecurity Project */}
+                <article className="card project-card" data-category="tools">
                     <div className="project-image">
                         <div className="project-placeholder">
-                            <i className="fas fa-plug"></i>
+                            <i className="fas fa-shield-virus"></i>
                         </div>
                         <div className="project-overlay">
-                            <a href="https://uconnect.up.railway.app" target="_blank" className="project-btn"><i className="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/taslimahmedtamim/PhishGuard" target="_blank" rel="noopener" className="project-btn" title="View Source Code">
+                                <i className="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
                     <div className="project-content">
-                        <div className="project-status live">Featured Live Project</div>
-                        <h3 style={{'color': 'var(--accent-secondary)'}}>UConnect</h3>
-                        <p>A comprehensive platform designed to seamlessly connect students, streamline academic collaboration, and foster a vibrant university community.</p>
+                        <div className="project-status live"><i className="fas fa-shield-alt"></i> Cybersecurity Tool</div>
+                        <h3>PhishGuard</h3>
+                        <p>AI-powered anti-phishing & web threat detection engine. Analyzes URL heuristics, domain age, SSL certificate validity, and email headers in real-time to intercept phishing attacks.</p>
                         <div className="project-tech">
-                            <span>Next.js</span>
+                            <span>Python</span>
+                            <span>Machine Learning</span>
+                            <span>Cybersecurity</span>
+                            <span>FastAPI</span>
                             <span>React</span>
-                            <span>Node.js</span>
                         </div>
                     </div>
                 </article>
 
+                {/* UConnect - Featured Live Web Platform */}
                 <article className="card project-card" data-category="web">
                     <div className="project-image">
                         <div className="project-placeholder">
-                            <i className="fas fa-heartbeat"></i>
+                            <i className="fas fa-network-wired"></i>
                         </div>
                         <div className="project-overlay">
-                            <a href="https://github.com/taslimahmedtamim/MediAssist" target="_blank" className="project-btn"><i className="fab fa-github"></i></a>
+                            <a href="https://uconnect.up.railway.app" target="_blank" rel="noopener" className="project-btn" title="Live Demo">
+                                <i className="fas fa-external-link-alt"></i>
+                            </a>
                         </div>
                     </div>
                     <div className="project-content">
-                        <div className="project-status live">Live Project</div>
+                        <div className="project-status live"><i className="fas fa-globe"></i> Live Platform</div>
+                        <h3>UConnect</h3>
+                        <p>Comprehensive academic collaboration platform connecting university students, streamlining project sharing, and building an active campus tech community.</p>
+                        <div className="project-tech">
+                            <span>Next.js</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </article>
+
+                {/* MediAssist - Healthcare Platform */}
+                <article className="card project-card" data-category="web">
+                    <div className="project-image">
+                        <div className="project-placeholder">
+                            <i className="fas fa-notes-medical"></i>
+                        </div>
+                        <div className="project-overlay">
+                            <a href="https://github.com/taslimahmedtamim/MediAssist" target="_blank" rel="noopener" className="project-btn" title="View Repository">
+                                <i className="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="project-content">
+                        <div className="project-status live"><i className="fas fa-code"></i> Full-Stack App</div>
                         <h3>MediAssist</h3>
-                        <p>Healthcare management platform designed to streamline medical records, appointments, and patient-doctor interactions.</p>
+                        <p>Healthcare management platform designed to streamline digital medical records, doctor appointments, and secure patient-provider interactions.</p>
                         <div className="project-tech">
                             <span>React</span>
                             <span>Node.js</span>
@@ -524,56 +606,28 @@ export default function Home() {
                     </div>
                 </article>
 
-                <article className="card project-card" data-category="web">
-                    <div className="project-image">
-                        <div className="project-placeholder">
-                            <i className="fas fa-heart"></i>
-                        </div>
-                        <div className="project-overlay">
-                            <a href="https://taslimahmedtamim.github.io/valentinesSpecial/" target="_blank" rel="noopener" className="project-btn"><i className="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <div className="project-content">
-                        <div className="project-status live">Live Project</div>
-                        <h3>Valentine Special</h3>
-                        <p>Interactive Valentine's Day special web app with animations, messages, and romantic theme design.</p>
-                        <div className="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </article>
-
+                {/* C++ to Python Code Generator */}
                 <article className="card project-card" data-category="tools">
                     <div className="project-image">
                         <div className="project-placeholder">
-                            <i className="fas fa-heart-pulse"></i>
+                            <i className="fas fa-code-compare"></i>
                         </div>
                         <div className="project-overlay">
-                            <a href="https://taslimahmedtamim.github.io/loveCalculator/" target="_blank" rel="noopener" className="project-btn"><i className="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/taslimahmedtamim/cpp-to-python-codeGenerator" target="_blank" rel="noopener" className="project-btn" title="View Repository">
+                                <i className="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
                     <div className="project-content">
-                        <div className="project-status live">Live Project</div>
-                        <h3>Love Calculator</h3>
-                        <p>Fun interactive love calculator tool with a modern design and engaging user experience.</p>
+                        <div className="project-status live"><i className="fas fa-terminal"></i> Open Source Tool</div>
+                        <h3>C++ to Python Transpiler</h3>
+                        <p>Automated code transpiler converting C++ control flow, functions, AST structures, and variable definitions into executable Python code.</p>
                         <div className="project-tech">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
+                            <span>C++</span>
+                            <span>Python</span>
+                            <span>AST Parsing</span>
+                            <span>Transpiler</span>
                         </div>
-                    </div>
-                </article>
-
-                <article className="card project-card placeholder-card" data-category="all">
-                    <div className="project-content centered">
-                        <div className="project-placeholder-icon">
-                            <i className="fas fa-plus"></i>
-                        </div>
-                        <h3>More Coming Soon</h3>
-                        <p>Exciting new projects in development. Stay tuned for updates!</p>
-                        <a className="project-link" href="#contact">Collaborate with me →</a>
                     </div>
                 </article>
             </div>
@@ -708,7 +762,7 @@ export default function Home() {
     <footer className="site-footer">
         <div className="footer-content">
             <div className="footer-logo">TAT</div>
-            <p>&copy; <span id="current-year"></span> Taslim Ahmed Tamim. Crafted with <i className="fas fa-heart"></i> and curiosity.</p>
+            <p>&copy; {new Date().getFullYear()} Taslim Ahmed Tamim. Crafted with <i className="fas fa-heart"></i> and curiosity.</p>
             <div className="footer-social">
                 <a href="https://github.com/taslimahmedtamim" target="_blank" rel="noopener" aria-label="GitHub"><i className="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/taslim-ahmed-tamim/" target="_blank" rel="noopener" aria-label="LinkedIn"><i className="fab fa-linkedin"></i></a>

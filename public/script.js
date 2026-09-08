@@ -230,21 +230,21 @@ new ParticleCanvas();
 
 // ========== Typed Text Animation ==========
 const heroPrefixes = [
-    "I secure",
-    "I defend",
-    "I analyze",
-    "I respond to",
-    "I detect",
-    "I hunt"
+    "I am a",
+    "I am a",
+    "I am a",
+    "I am a",
+    "I am a",
+    "I am a"
 ];
 
 const heroTypedPhrases = [
-    "secure systems",
-    "threat intelligence",
-    "incident response",
-    "vulnerability assessments",
-    "SIEM solutions",
-    "network defense"
+    "Full-Stack Developer",
+    "Cybersecurity Engineer",
+    "Threat Analysis Specialist",
+    "Penetration Tester",
+    "Competitive Programmer",
+    "Security Researcher"
 ];
 
 let typedIndex = 0;
@@ -341,8 +341,8 @@ function setupProjectFilter() {
             projectCards.forEach(card => {
                 const category = card.getAttribute('data-category');
                 
-                if (filter === 'all' || category === filter || category === 'all') {
-                    card.style.display = 'block';
+                if (filter === 'all' || category.includes(filter) || category === 'all') {
+                    card.style.display = 'flex';
                     card.style.animation = 'fadeIn 0.5s ease forwards';
                 } else {
                     card.style.display = 'none';
