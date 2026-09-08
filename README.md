@@ -1,74 +1,36 @@
-# 🚀 Taslim Ahmed Tamim | Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-A futuristic, interactive personal portfolio showcasing my skills, projects, and journey as a Full Stack Developer & Competitive Programmer.
+## Getting Started
 
-## ✨ Features
+First, run the development server:
 
-- **Futuristic Design** - Dark theme with glowing accents, glassmorphism effects, and smooth animations
-- **Interactive Background** - Particle canvas animation with mouse interaction
-- **Responsive Layout** - Optimized for desktop, tablet, and mobile devices
-- **Smooth Scrolling** - Performance-optimized scroll behavior
-- **Dynamic Typing Effect** - Animated text showcasing different skills
-- **Project Showcase** - Filterable project gallery with categories
-- **Skills Section** - Visual representation of technical skills with progress bars
-- **Contact Section** - Easy ways to connect via email and social media
-
-## 🛠️ Tech Stack
-
-- **HTML5** - Semantic markup
-- **CSS3** - Custom properties, Flexbox, Grid, animations
-- **JavaScript** - Vanilla JS with ES6+ features
-- **Font Awesome** - Icons
-- **Google Fonts** - Orbitron & Work Sans typography
-
-## 📁 Project Structure
-
-```
-portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # All styles and animations
-├── script.js           # JavaScript functionality
-├── assets/
-│   └── tamim.png       # Profile image
-├── docs/
-│   └── Taslim-Ahmed-Tamim-Resume.pdf
-└── README.md
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## 🎨 Sections
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-| Section | Description |
-|---------|-------------|
-| **Hero** | Introduction with profile image, stats, and call-to-action buttons |
-| **About** | Personal story, mission, and highlights |
-| **Skills** | Programming languages, web stack, databases, and tools |
-| **Projects** | Filterable gallery of completed and ongoing projects |
-| **Blog** | Signal log for sharing insights and discoveries |
-| **Contact** | Email, location, and social media links |
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-## 📱 Responsive Breakpoints
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- **Desktop**: 900px and above
-- **Tablet**: 640px - 899px
-- **Mobile**: Below 640px
+## Learn More
 
-## 🔗 Live Demo
+To learn more about Next.js, take a look at the following resources:
 
-[View Portfolio](https://taslimahmedtamim.github.io/portfolio)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 📧 Contact
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- **Email**: taslimahmedtamim4u@gmail.com
-- **LinkedIn**: [Taslim Ahmed Tamim](https://www.linkedin.com/in/taslim-ahmed-tamim/)
-- **GitHub**: [taslimahmedtamim](https://github.com/taslimahmedtamim)
-- **Codeforces**: [taslimahmedtamim](https://codeforces.com/profile/taslimahmedtamim)
+## Deploy on Vercel
 
-## 📄 License
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-<p align="center">
-  Crafted with ❤️ and curiosity by <strong>Taslim Ahmed Tamim</strong>
-</p>
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
