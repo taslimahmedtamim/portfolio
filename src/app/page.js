@@ -29,6 +29,7 @@ export default function Home() {
     <div className="bg-glow bg-glow-3"></div>
 
     <header className="site-header">
+        <div className="nav-overlay-bg" id="nav-overlay"></div>
         <div className="header-inner">
             <a href="#hero" className="logo">TAT</a>
             <nav className="site-nav" aria-label="Primary Navigation">
