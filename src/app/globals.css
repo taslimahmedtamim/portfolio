@@ -164,6 +164,13 @@
     box-shadow: 0 12px 30px rgba(33, 199, 255, 0.25);
 }
 
+.scroll-top::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    z-index: -1;
+}
+
 /* ========== Active Nav Link ========== */
 .site-nav a.active {
     color: var(--accent-secondary);
@@ -793,6 +800,7 @@ section {
     width: 480px;
     height: 480px;
     z-index: 1;
+    pointer-events: none;
 }
 
 .hud-svg {
@@ -881,7 +889,7 @@ section {
 .orbit-chip:hover {
     border-color: var(--accent-secondary);
     box-shadow: 0 6px 20px rgba(33, 199, 255, 0.45);
-    transform: scale(1.08);
+    scale: 1.05;
 }
 
 .chip-top-left {
@@ -1094,6 +1102,14 @@ section {
     border-color: var(--accent-secondary);
     box-shadow: 0 10px 30px rgba(33, 199, 255, 0.4);
     transform: translateX(-50%) translateY(-3px);
+}
+
+.hex-hud-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    bottom: -10px;
+    z-index: -1;
 }
 
 @keyframes badgePulseRing {
@@ -2519,19 +2535,33 @@ section {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-block: 1rem;
         width: 100%;
-        overflow: hidden;
+        height: 235px;
+        margin: 0.5rem 0 1rem 0;
+        position: relative;
     }
 
     .hero-visual-mobile .hex-profile-container {
-        transform: scale(0.72);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        scale: 0.53;
         transform-origin: center center;
-        margin: -45px 0;
+        margin: 0;
     }
 }
 
 @media (max-width: 640px) {
+    .hero-visual-mobile {
+        height: 195px;
+        margin: 0.25rem 0 0.75rem 0;
+    }
+
+    .hero-visual-mobile .hex-profile-container {
+        scale: 0.44;
+    }
+
     .hero {
         text-align: center;
         min-height: auto;
@@ -2697,9 +2727,13 @@ section {
 }
 
 @media (max-width: 420px) {
+    .hero-visual-mobile {
+        height: 168px;
+        margin: 0.25rem 0 0.5rem 0;
+    }
+
     .hero-visual-mobile .hex-profile-container {
-        transform: scale(0.54);
-        margin: -72px 0;
+        scale: 0.38;
     }
 
     .title-line {
