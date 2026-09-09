@@ -440,61 +440,7 @@ function setupYear() {
 setupYear();
 
 // ========== Blog Posts ==========
-const blogPosts = [
-    {
-        title: "Booting Up the Signal Log",
-        description: "Why I'm launching this blog, what to expect, and how curiosity fuels every experiment.",
-        date: "2025-01-20",
-        tags: ["announcement", "learning"],
-        link: "#"
-    },
-    {
-        title: "Competitive Programming Mindset",
-        description: "A look into the routines, habits, and tactics that help me solve complex problems at speed.",
-        date: "2025-02-05",
-        tags: ["competitive", "strategy"],
-        link: "#"
-    },
-    {
-        title: "Securing the Stack",
-        description: "Practical steps for hardening full stack applications without slowing down product velocity.",
-        date: "2025-03-15",
-        tags: ["security", "full stack"],
-        link: "#"
-    }
-];
-
-function renderBlogCards() {
-    const blogGrid = document.getElementById("blog-grid");
-    if (!blogGrid) return;
-
-    const formatter = new Intl.DateTimeFormat("en", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric"
-    });
-
-    blogGrid.innerHTML = blogPosts
-        .map(post => {
-            const formattedDate = formatter.format(new Date(post.date));
-            const tagsHtml = post.tags
-                .map(tag => `<span class="tag">${tag}</span>`)
-                .join("");
-
-            return `
-                <article class="card blog-card reveal">
-                    <time datetime="${post.date}">${formattedDate}</time>
-                    <h3>${post.title}</h3>
-                    <p>${post.description}</p>
-                    <div class="tags">${tagsHtml}</div>
-                    <a class="project-link" href="${post.link}">Read Post →</a>
-                </article>
-            `;
-        })
-        .join("");
-}
-
-renderBlogCards();
+// Blog cards are now injected server-side by Next.js in page.js
 
 // Re-observe blog cards after they're rendered
 setTimeout(() => {

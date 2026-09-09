@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import Script from 'next/script';
+import { getSortedPostsData } from '@/lib/blog';
 
 export default function Home() {
+  const allPostsData = getSortedPostsData();
   return (
     <>
       {/* We embed the original script logic safely */}
@@ -646,7 +648,27 @@ export default function Home() {
                 </a>
             </div>
             <div className="blog-grid" id="blog-grid">
-                {/*  Blog cards injected by script.js  */}
+                {allPostsData.map(({ id, date, title, description, tags }) => {
+                    const formattedDate = date ? new Intl.DateTimeFormat("en", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric"
+                    }).format(new Date(date)) : '';
+                    
+                    return (
+                        <article className="card blog-card reveal" key={id}>
+                            {date && <time dateTime={date}>{formattedDate}</time>}
+                            <h3>{title}</h3>
+                            <p>{description}</p>
+                            <div className="tags">
+                                {tags && tags.map((tag) => (
+                                    <span className="tag" key={tag}>{tag}</span>
+                                ))}
+                            </div>
+                            <Link className="project-link" href={`/blog/${id}`}>Read Post →</Link>
+                        </article>
+                    );
+                })}
             </div>
         </section>
 

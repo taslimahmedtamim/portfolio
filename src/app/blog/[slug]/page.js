@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getPostData, getAllPostIds } from '@/lib/blog';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import './blog.css'; // Add some basic styling for markdown content
 
 export async function generateStaticParams() {
@@ -36,8 +37,8 @@ export default async function BlogPost({ params }) {
         </div>
       </header>
 
-      <main style={{ maxWidth: '800px', width: '100%', padding: '2rem 1rem' }}>
-        <article className="card card-gloss" style={{ padding: '3rem 2rem' }}>
+      <main style={{ maxWidth: '1440px', width: '100%', padding: '2rem 5%' }}>
+        <article className="card card-gloss" style={{ padding: '3rem 5%' }}>
           <h1 className="section-title" style={{ textAlign: 'left', marginBottom: '0.5rem', color: 'var(--accent)' }}>
             {postData.title}
           </h1>
@@ -45,11 +46,10 @@ export default async function BlogPost({ params }) {
             Published on {postData.date}
           </div>
           
-          {/* Render HTML parsed from Markdown */}
-          <div 
-            className="blog-content" 
-            dangerouslySetInnerHTML={{ __html: postData.contentHtml }} 
-          />
+          {/* Render MDX or HTML parsed from Markdown */}
+          <div className="blog-content">
+            <MDXRemote source={postData.content} />
+          </div>
         </article>
       </main>
     </div>
